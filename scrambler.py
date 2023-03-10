@@ -77,6 +77,16 @@ def menu():
      print(not_dict())
   elif option == 2:
      print(gen_scramble())
+     print()
+     repeat = input("Would you like another scramble (y/n)? ")
+     while repeat == "y" or repeat == "yes":
+        print(gen_scramble())
+        print()
+        repeat = input("Would you like another scramble (y/n)? ")
+     print()
+     print("Very well. Returning to menu...")
+     print()
+     menu()
   elif option == 3:
      print(pattern_dict())
   elif option == 4:
