@@ -16,28 +16,35 @@ def not_dict(): #notation dictionary
       print("{}: {}".format(move, notation[move]))
   for symbol in special_notation:
      print("{}: {}".format(symbol, special_notation[symbol]))
-
-
-csize = int(input("Enter cube size [1-4]: ")) #cube size
-try:
-    slen = int(input("Scramble length: ")) #length of scramble
-    while slen < 1:
-        print("Please enter a positive integer.")
-        slen = int(input("Scramble length: "))
-except:
-    print("Please enter a positive integer.")
-    slen = int(input("Scramble length: "))
-    while slen < 1:
-        print("Please enter a positive integer.")
-        slen = int(input("Scramble length: "))
-
+  print()
+  leave = input("Return to menu (y/n)? ")
+  while leave != "y" and leave != "yes":
+     leave = input("Return to menu (y/n)? ")
+  print()
+  print("Returning to menu...")
+  print()
+  menu()
 
 def gen_scramble():
-  s = valid([[random.choice(moves[csize]), random.choice(mdir), random.choice(mcount)] for i in range(slen)])
+  csize = int(input("Enter cube size [1-4]: ")) #cube size
+  try:
+      slen = int(input("Scramble length: ")) #length of scramble
+      while slen < 1:
+          print("Please enter a positive integer.")
+          slen = int(input("Scramble length: "))
+  except:
+      print("Please enter a positive integer.")
+      slen = int(input("Scramble length: "))
+      while slen < 1:
+          print("Please enter a positive integer.")
+          slen = int(input("Scramble length: "))
+  print()
+  print((str(csize) + "x")*2 + str(csize) + " Scramble" + " - " + str(slen) + " steps" )
+  s = valid([[random.choice(moves[csize]), random.choice(mdir), random.choice(mcount)] for i in range(slen)], csize)
   return ''.join(s[x][0] + s[x][1] + s[x][2] + " "for x in range(len(s)))
 
-def valid(ar):
-  for x in range (0, len(ar)):
+def valid(ar, csize):
+  for x in range (len(ar)):
     if ar[x][0] in moves[csize][-7:-1]:
       ar[x][1] = random.choice(mdir[:2])
   for x in range(1, len(ar)):
@@ -48,26 +55,30 @@ def valid(ar):
           ar[x][0] = random.choice(moves[csize])
   return ar
 
+def pattern_dict():
+   print("Coming soon... Returning to menu :)")
+   print()
+   menu()
+
+def end():
+   print("Thank you for using the Rubik's Cube help desk.")
+   input("Press ENTER to quit.")
+
 def menu():
-   try:
-    def choice():
-      option = int(input("""Welcome to the Rubik's Cube help desk! Here are your options:
-      1. Notations dictionary
-      2. Scrambler
-      3. Patterns dictionary
-      4. Quit
-      
-      How can we help you today [1-4]? """))
-      return option
-    option = choice()
-   except:
-      print()
-      print("Invalid input type. Please type a numerical value from 1-4 according to your menu choice.")
-      choice()
-      while type(choice()) != int:
-        print()
-        print("Invalid input type. Please type a numerical value from 1-4 according to your menu choice.")
-        choice()
-print()
-print((str(csize) + "x")*2 + str(csize) + " Scramble" + " - " + str(slen) + " steps" )
-print(gen_scramble())
+  option = int(input("""Welcome to the Rubik's Cube help desk! Here are your options:
+  1. Notations dictionary
+  2. Scrambler
+  3. Patterns dictionary
+  4. Quit
+  
+  How can we help you today [1-4]? """))
+  print()
+  if option == 1:
+     print(not_dict())
+  elif option == 2:
+     print(gen_scramble())
+  elif option == 3:
+     print(pattern_dict())
+  elif option == 4:
+     print(end())
+menu()
