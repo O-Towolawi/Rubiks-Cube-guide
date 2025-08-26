@@ -1,4 +1,5 @@
-def pattern_dict():
-   print("Coming soon... Returning to menu :)")
-   print()
-   menu()
+class PatternDict:
+    def pattern_dict(self):
+       print("Coming soon... Returning to menu :)")
+       print()
+       menu()
