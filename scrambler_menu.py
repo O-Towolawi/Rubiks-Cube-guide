@@ -1,23 +1,16 @@
 from menu import Menu
+from menu_option import MenuOption
 from scrambler import Scrambler
 
 
-class ScramblerMenu:
+class ScramblerMenu(MenuOption):
     def __init__(self):
-        self.menu = Menu()
+        super().__init__()
         self.choices = {
             1: "Generate a scramble",
             2: "Quit",
         }
-        self.menu_text = "Coming soon... Returning to menu :)"
-
-    def trigger_menu(self) -> int:
-        print(self.menu_text)
-        for key, value in self.choices.items():
-            print(f"{key}. {value}")
-        option = int(input("How can we help you today [1-4]? "))
-
-        return option
+        self.menu_text = "Welcome to the Scrambler! Please choose an option:"
 
     def select_option(self, option: int):
         match option:

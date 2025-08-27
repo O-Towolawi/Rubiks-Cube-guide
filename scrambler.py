@@ -1,13 +1,13 @@
 import random
 
-from menu import Menu
+from menu_option import MenuOption
 from notations_dictionary import NotationsDictionary
 from scrambler_menu import ScramblerMenu
 
 
-class Scrambler:
+class Scrambler(MenuOption):
     def __init__(self):
-        self.menu = Menu()
+        super().__init__()
         self.choices = {
             1: "2x2",
             2: "3x3",
@@ -16,19 +16,13 @@ class Scrambler:
         }
         self.menu_text = "Welcome to the Scrambler! Choose your cube size:"
 
+        self.scrambler_menu = ScramblerMenu()
+
         # all notation and combintations depending on cube size
         self.notations = NotationsDictionary.get_notations(NotationsDictionary())
         self.mdir = self.notations["directions_notations"]  # move direction
         self.mcount = self.notations["move_count_notations"]  # move count
         self.moves = self.notations["notations_list"]
-
-    def trigger_menu(self) -> int:
-        print(self.menu_text)
-        for key, value in self.choices.items():
-            print(f"{key}. {value}")
-        option = int(input("How can we help you today [1-4]? "))
-
-        return option
 
     def select_option(self, option: int):
         slen = int(input("Scramble length: "))
@@ -40,10 +34,10 @@ class Scrambler:
             case 3:
                 self.gen_scramble(4, slen)
             case 4:
-                print("Returning to menu.")
-                self.trigger_menu()
+                print("Returning to main scrambler menu.")
+                self.scrambler_menu.trigger_menu()
             case _:
-                print("Invalid option. Returning to menu...")
+                print("Invalid option.")
                 self.trigger_menu()
 
     def gen_scramble(self, csize, slen):
@@ -65,7 +59,7 @@ class Scrambler:
                     random.choice(self.mdir),
                     random.choice(self.mcount),
                 ]
-                for i in range(slen)
+                for _ in range(slen)
             ],
             csize,
         )

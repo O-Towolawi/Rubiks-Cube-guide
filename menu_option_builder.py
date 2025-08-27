@@ -3,24 +3,6 @@ from abc import ABC, abstractmethod
 from typing import Any
 
 
-class MenuOption(ABC):
-    @abstractmethod
-    def get_option_number(self):
-        return self.option_number
-
-    @abstractmethod
-    def get_option_name(self):
-        return self.option_name
-
-    @abstractmethod
-    def get_option_trigger(self):
-        return self.option_trigger
-
-    @abstractmethod
-    def get_option_description(self):
-        return self.option_description
-
-
 class MenuOptionBuilder:
 
     @abstractmethod

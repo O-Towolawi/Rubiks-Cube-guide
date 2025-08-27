@@ -1,8 +1,18 @@
 from menu import Menu
+from menu_option import MenuOption
 
 
-class NotationsDictionary:
+class NotationsDictionary(MenuOption):
     def __init__(self):
+        super().__init__()
+        self.choices = {
+            1: "2x2",
+            2: "3x3",
+            3: "4x4",
+            4: "Quit",
+        }
+        self.menu_text = "Welcome to the Notations guide! Here are your options:"
+
         self.notations_dict = {
             "L": "downwards",
             "R": "upwards",
@@ -20,7 +30,6 @@ class NotationsDictionary:
             "b": "third from the front. Moves anti-clockwise.",
         }
         self.notations_list = self.notations_dict.keys()
-        self.menu = Menu()
 
         # special notations
         self.direction_notations = {
@@ -42,36 +51,21 @@ class NotationsDictionary:
         # 4x4 or higher
         self.x4_notations = self.notations_dict
 
-        self.choices = {
-            1: "2x2",
-            2: "3x3",
-            3: "4x4",
-            4: "Quit",
-        }
-        self.menu_text = "Welcome to the Notations guide! Here are your options:"
-
     @staticmethod
-    def get_notations(self):
+    def get_notations():
         return {
-            "notations_list": self.notations_list,
-            "notations_dict": self.notations_dict,
-            "direction_notations": self.direction_notations,
-            "move_count_notations": self.move_count_notations,
-            "2x2_notations": self.x2_notations,
-            "3x3_notations": self.x3_notations,
-            "4x4_notations": self.x4_notations,
+            "notations_list": NotationsDictionary().notations_list,
+            "notations_dict": NotationsDictionary().notations_dict,
+            "direction_notations": NotationsDictionary().direction_notations,
+            "move_count_notations": NotationsDictionary().move_count_notations,
+            "2x2_notations": NotationsDictionary().x2_notations,
+            "3x3_notations": NotationsDictionary().x3_notations,
+            "4x4_notations": NotationsDictionary().x4_notations,
         }
-
-    def trigger_menu(self) -> int:
-        print(self.menu_text)
-        for key, value in self.choices.items():
-            print(f"{key}. {value}")
-        option = int(input("How can we help you today [1-4]? "))
-
-        return option
 
     def select_option(self, option: int):
-        print(self.special_notations)
+        print(self.direction_notations)
+        print(self.move_count_notations)
         match option:
             case 1:
                 print(self.x2_notations)
