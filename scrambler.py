@@ -45,11 +45,11 @@ class Scrambler:
             case _:
                 print("Invalid option. Returning to menu...")
                 self.trigger_menu()
-    
+
     def gen_scramble(self, csize, slen):
         self.csize = csize
         self.slen = slen
-        
+
         print(
             (str(csize) + "x") * 2
             + str(csize)

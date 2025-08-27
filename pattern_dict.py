@@ -1,5 +1,6 @@
 from menu import Menu
 
+
 class PatternDict:
     def __init__(self):
         self.menu = Menu()
@@ -21,4 +22,3 @@ class PatternDict:
             case 1:
                 print("Returning to main menu.")
                 self.menu.trigger_menu()
-
