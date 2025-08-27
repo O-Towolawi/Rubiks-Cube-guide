@@ -1,16 +1,12 @@
+from menu_option import MenuOption
 from notations_dictionary import NotationsDictionary
 from pattern_dict import PatternDict
 from scrambler import Scrambler
 
 
-class Menu:
+class Menu(MenuOption):
     def __init__(self):
-        self.options = [
-            "Notations dictionary",
-            "Scrambler",
-            "Patterns dictionary",
-            "Quit",
-        ]
+        super().__init__()
         self.choices = {
             1: "Notations dictionary",
             2: "Scrambler",
@@ -18,14 +14,6 @@ class Menu:
             4: "Quit",
         }
         self.menu_text = "Welcome to the Rubik's Cube help desk! Here are your options:"
-
-    def trigger_menu(self) -> int:
-        print(self.menu_text)
-        for key, value in self.choices.items():
-            print(f"{key}. {value}")
-        option = int(input("How can we help you today [1-4]? "))
-
-        return option
 
     def select_option(self, option: int):
         match option:
