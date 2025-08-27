@@ -1,23 +1,30 @@
 from abstract_menu_option import MenuOption
 from concrete_commands import OpenNotationsDictionaryCommand, OpenScramblerCommand, OpenPatternDictCommand, \
     CloseMainMenuCommand, ReturnToMainMenuCommand
+from notations_dictionary import NotationsDictionary
 
 
 class MainMenu(MenuOption):
     def __init__(self):
         super().__init__()
         self.choices = {
-            1: ["Notations dictionary", OpenNotationsDictionaryCommand()],
-            2: ["Scrambler", OpenScramblerCommand()],
-            3: ["Patterns dictionary", OpenPatternDictCommand()],
-            4: ["Quit", CloseMainMenuCommand()]
+            1: ["Notations dictionary", NotationsDictionary],
+            2: ["Scrambler", Scrambler],
+            3: ["Patterns dictionary", PatternDict],
+            4: ["Quit", self.close]
         }
         self.menu_text = "Welcome to the Rubik's Cube help desk! Here are your options:"
 
-    def select_option(self):
-        option = self.run()
+    def run(self) -> int:
+        print(self.menu_text)
+        for key, value in self.choices.items():
+            print(f"{key}. {value[0]}")
+        option = int(input(f"How can we help you today [1-{len(self.choices)}]? "))
+        return option
+
+    def select_option(self, menu_option):
         try:
-            self.choices[option][1].execute()
+            menu_option.run()
         except KeyError:
             print("Invalid option.")
             return ReturnToMainMenuCommand().execute()

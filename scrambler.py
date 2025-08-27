@@ -19,7 +19,7 @@ class Scrambler(MenuOption):
         self.scrambler_menu = ScramblerMenu()
 
         # all notation and combintations depending on cube size
-        self.notations = NotationsDictionary.get_notations(NotationsDictionary())
+        self.notations = NotationsDictionary().get_all_notations()
         self.mdir = self.notations["directions_notations"]  # move direction
         self.mcount = self.notations["move_count_notations"]  # move count
         self.moves = self.notations["notations_list"]

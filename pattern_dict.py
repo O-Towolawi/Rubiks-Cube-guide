@@ -1,4 +1,3 @@
-from main_menu import MainMenu
 from abstract_menu_option import MenuOption
 
 

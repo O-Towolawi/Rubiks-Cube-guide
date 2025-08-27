@@ -19,5 +19,5 @@ class MenuOption(ABC):
         pass
 
     @abstractmethod
-    def select_option(self):
+    def select_option(self, option: int):
         pass
