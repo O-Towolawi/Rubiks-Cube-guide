@@ -1,22 +1,6 @@
-from menu_options.notations_dictionary import *
-from menu_options.scrambler import *
-from menu_options.pattern_dict import *
-
-
-def details():
-    csize = int(input("Enter cube size [1-4]: "))  # cube size
-    try:
-        slen = int(input("Scramble length: "))  # length of scramble
-        while slen < 1:
-            print("Please enter a positive integer.")
-            slen = int(input("Scramble length: "))
-    except:
-        print("Please enter a positive integer.")
-        slen = int(input("Scramble length: "))
-        while slen < 1:
-            print("Please enter a positive integer.")
-            slen = int(input("Scramble length: "))
-    return (csize, slen)
+from notations_dictionary import NotationsDictionary
+from pattern_dict import PatternDict
+from scrambler import Scrambler
 
 
 class Menu:
@@ -43,21 +27,21 @@ class Menu:
 
         return option
 
-    def select_option(self, option: int) -> str:
+    def select_option(self, option: int):
         match option:
             case 1:
-                NotationsDictionary.trigger_menu()
+                NotationsDictionary().trigger_menu()
             case 2:
-                Scrambler.trigger_menu()
+                Scrambler().trigger_menu()
             case 3:
-                PatternDict.trigger_menu()
+                PatternDict().trigger_menu()
             case 4:
-                end()
+                self.close()
             case _:
                 print("Invalid option. Returning to menu...")
                 self.trigger_menu()
 
 
-def end():
-    print("Thank you for using the Rubik's Cube help desk.")
-    input("Press ENTER to quit.")
+    def close(self):
+        print("Thank you for using the Rubik's Cube help desk.")
+        input("Press ENTER to quit.")
