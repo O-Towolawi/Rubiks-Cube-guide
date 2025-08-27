@@ -1,6 +1,6 @@
 import random
 
-from menu_option import MenuOption
+from abstract_menu_option import MenuOption
 from notations_dictionary import NotationsDictionary
 from scrambler_menu import ScramblerMenu
 
@@ -35,10 +35,10 @@ class Scrambler(MenuOption):
                 self.gen_scramble(4, slen)
             case 4:
                 print("Returning to main scrambler menu.")
-                self.scrambler_menu.trigger_menu()
+                self.scrambler_menu.run()
             case _:
                 print("Invalid option.")
-                self.trigger_menu()
+                self.run()
 
     def gen_scramble(self, csize, slen):
         self.csize = csize

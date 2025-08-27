@@ -1,5 +1,5 @@
-from menu import Menu
-from menu_option import MenuOption
+from main_menu import MainMenu
+from abstract_menu_option import MenuOption
 
 
 class NotationsDictionary(MenuOption):
@@ -78,13 +78,13 @@ class NotationsDictionary(MenuOption):
                 match leave:
                     case "y" | "yes":
                         print("Returning to main menu.")
-                        self.menu.trigger_menu()
+                        self.menu.run()
                     case "n" | "no":
-                        self.trigger_menu()
+                        self.run()
                     case _:
                         print("Invalid option.")
-                        self.trigger_menu()
+                        self.run()
 
             case _:
                 print("Invalid option.")
-                self.trigger_menu()
+                self.run()

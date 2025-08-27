@@ -1,5 +1,5 @@
-from menu import Menu
-from menu_option import MenuOption
+from main_menu import MainMenu
+from abstract_menu_option import MenuOption
 from scrambler import Scrambler
 
 
@@ -16,7 +16,7 @@ class ScramblerMenu(MenuOption):
         match option:
             case 1:
                 self.scrambler = Scrambler()
-                self.scrambler.trigger_menu()
+                self.scrambler.run()
             case 2:
                 print("Returning to main menu.")
-                self.menu.trigger_menu()
+                self.menu.run()
