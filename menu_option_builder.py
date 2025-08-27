@@ -2,6 +2,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any
 
+
 class MenuOption(ABC):
     @abstractmethod
     def get_option_number(self):
@@ -18,6 +19,7 @@ class MenuOption(ABC):
     @abstractmethod
     def get_option_description(self):
         return self.option_description
+
 
 class MenuOptionBuilder:
 
