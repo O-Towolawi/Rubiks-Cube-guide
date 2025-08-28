@@ -4,8 +4,8 @@ from concrete_commands import GoToMenuCommand
 class MenuController:
 
     def go_to_main_menu(self):
-        from main_menu import MainMenu
-        GoToMenuCommand(MainMenu()).execute()
+        from main_menu import MainAbstractMenu
+        GoToMenuCommand(MainAbstractMenu()).execute()
 
     def go_to_notations_menu(self):
         from notations_menu import NotationsMenu
@@ -16,8 +16,8 @@ class MenuController:
         GoToMenuCommand(PatternsMenu()).execute()
 
     def go_to_scrambler_menu(self):
-        from scrambler_menu import ScramblerMenu
-        GoToMenuCommand(ScramblerMenu()).execute()
+        from scrambler_menu import ScramblerAbstractMenu
+        GoToMenuCommand(ScramblerAbstractMenu()).execute()
 
     def go_to_scrambler(self):
         from scrambler import Scrambler

@@ -1,7 +1,8 @@
-from abstract_menu_option import MenuOption
+from abstract_menu import AbstractMenu
+from menu_controller import MenuController
 
 
-class PatternsMenu(MenuOption):
+class PatternsMenu(AbstractMenu):
     def __init__(self):
         super().__init__()
         self.controller = MenuController()

@@ -1,9 +1,9 @@
-from abstract_menu_option import MenuOption
+from abstract_menu import AbstractMenu
 from concrete_commands import GoToMenuCommand
 from menu_controller import MenuController
 
 
-class MainMenu(MenuOption):
+class MainAbstractMenu(AbstractMenu):
     def __init__(self):
         super().__init__()
         self.controller = MenuController()

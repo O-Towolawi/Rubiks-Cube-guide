@@ -1,4 +1,4 @@
-from main_menu import MainMenu
+from main_menu import MainAbstractMenu
 
 if __name__ == "__main__":
-    MainMenu().run()
+    MainAbstractMenu().run()
