@@ -6,27 +6,29 @@ from abstract_valid_move import AbstractValidMoves
 class X2ValidMoves(AbstractValidMoves):
     def __init__(self):
         super().__init__()
-
+    
+    
     def get_valid_moves(self):
         return "L", "R", "U", "D", "F", "B", "x"
 
+    
     def get_valid_directions(self):
         return "", "'"
 
+    
     def get_valid_counts(self):
         return "", "2"
-
 
 class X3ValidMoves(AbstractValidMoves):
     def __init__(self):
         super().__init__()
-
+    
     def get_valid_moves(self):
         return X2ValidMoves().get_valid_moves() + ("M",)
-
+    
     def get_valid_directions(self):
         return X2ValidMoves().get_valid_directions() + ("w",)
-
+    
     def get_valid_counts(self):
         return X2ValidMoves().get_valid_counts()
 
@@ -40,8 +42,7 @@ class X3ValidMoves(AbstractValidMoves):
             return self.generate_valid_move()
 
         return random_move + random_direction + random_count
-
-
+    
 class X4ValidMoves(AbstractValidMoves):
     def __init__(self):
         super().__init__()
@@ -49,9 +50,11 @@ class X4ValidMoves(AbstractValidMoves):
     def get_valid_moves(self):
         return X3ValidMoves().get_valid_moves() + ("l", "r", "u", "d", "f", "b")
 
+    
     def get_valid_directions(self):
         return X3ValidMoves().get_valid_directions()
 
+    
     def get_valid_counts(self):
         return X3ValidMoves().get_valid_counts()
 

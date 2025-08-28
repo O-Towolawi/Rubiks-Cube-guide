@@ -1,8 +1,8 @@
 from valid_moves import X2ValidMoves, X3ValidMoves, X4ValidMoves
 
-
 class Notations:
     def __init__(self):
+
         self.notations_dict = {
             "L": "downwards",
             "R": "upwards",

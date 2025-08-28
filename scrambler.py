@@ -49,10 +49,8 @@ class Scrambler(AbstractMenu):
             scramble.append(next_move)
 
             # Don't repeat moves consecutively
-            if i > 0 and scramble[i - 1][0] == scramble[i][0]:
-                while scramble[i - 1][0] == scramble[i][0]:
-                    scramble[i] = self.notations.valid_moves[
-                        csize
-                    ].generate_valid_move()
+            if i>0 and scramble[i-1][0] == scramble[i][0]:
+                while scramble[i-1][0] == scramble[i][0]:
+                    scramble[i] = self.notations.valid_moves[csize].generate_valid_move()
 
         return " ".join(scramble)
