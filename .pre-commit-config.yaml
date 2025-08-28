@@ -1,0 +1,38 @@
+exclude: '\.github/workflows/.*\.yml|\.github/workflows/.*\.yaml|schemas/.*|Makefile'
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-ast
+      - id: debug-statements
+      - id: requirements-txt-fixer
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: name-tests-test
+        args: ["--pytest", "--pattern", "test_.*\\.py"]
+      - id: check-toml
+      - id: trailing-whitespace
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.9.0
+    hooks:
+      - id: mypy
+        args: ["--ignore-missing-imports", "--show-error-codes", "--config-file=pyproject.toml"]
+        additional_dependencies: [
+          stubs==1.0.0,
+          types-retry==0.9.9.4,
+          types-requests==2.31.0.20240125,
+          types-pytz==2024.1.0.20240203,
+          types-python-dateutil==2.8.19.20240106,
+          types-croniter==2.0.0.20240106
+        ]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.3.3
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
