@@ -1,9 +1,6 @@
-import random
-
 from abstract_menu import AbstractMenu
-from concrete_commands import GoToMenuCommand
-from notations_menu import NotationsMenu
-from scrambler_menu import ScramblerMenu
+from menu_controller import MenuController
+from notations import Notations
 
 
 class Scrambler(AbstractMenu):
@@ -15,63 +12,45 @@ class Scrambler(AbstractMenu):
             3: "4x4",
             4: "Quit",
         }
-        self.menu_text = "Welcome to the Scrambler! Choose your cube size:"
-
-        # all notation and combintations depending on cube size
-        self.notations = NotationsMenu().get_all_notations()
-        self.mdir = self.notations["directions_notations"]  # move direction
-        self.mcount = self.notations["move_count_notations"]  # move count
-        self.moves = self.notations["notations_list"]
+        self.menu_text = "\nWelcome to the Scrambler! Choose your cube size:"
+        self.controller = MenuController()
+        self.notations = Notations()
 
     def select_option(self, option: int):
-        slen = int(input("Scramble length: "))
         match option:
             case 1:
-                self.gen_scramble(2, slen)
+                slen = int(input("Scramble length: "))
+                print(self.gen_scramble(2, slen))
             case 2:
-                self.gen_scramble(3, slen)
+                slen = int(input("Scramble length: "))
+                print(self.gen_scramble(3, slen))
             case 3:
-                self.gen_scramble(4, slen)
+                slen = int(input("Scramble length: "))
+                print(self.gen_scramble(4, slen))
             case 4:
                 print("Returning to main scrambler menu.")
-                GoToMenuCommand(ScramblerMenu()).execute()
+                self.controller.go_to_scrambler_menu()
             case _:
                 print("Invalid option.")
                 self.run()
 
+        input("\n Press ENTER to return to scrambler menu.")
+        self.controller.go_to_scrambler_menu()
+
     def gen_scramble(self, csize, slen):
         self.csize = csize
         self.slen = slen
+        scramble = []
 
-        print(
-            (str(csize) + "x") * 2
-            + str(csize)
-            + " Scramble"
-            + " - "
-            + str(slen)
-            + " steps"
-        )
-        s = self.valid(
-            [
-                [
-                    random.choice(self.moves[csize]),
-                    random.choice(self.mdir),
-                    random.choice(self.mcount),
-                ]
-                for _ in range(slen)
-            ],
-            csize,
-        )
-        return "".join(s[x][0] + s[x][1] + s[x][2] + " " for x in range(len(s)))
+        print(f"\n{str(csize)}x{str(csize)} Scramble - {str(slen)} steps")
 
-    def valid(self, ar, csize):
-        for x in range(len(ar)):
-            if ar[x][0] in self.moves[csize][-7:-1]:
-                ar[x][1] = random.choice(self.mdir[:2])
-        for x in range(1, len(ar)):
-            while ar[x][0] == ar[x - 1][0]:
-                ar[x][0] = random.choice(self.moves[csize])
-        for x in range(2, len(ar)):
-            while ar[x][0] == ar[x - 2][0] or ar[x][0] == ar[x - 1][0]:
-                ar[x][0] = random.choice(self.moves[csize])
-        return ar
+        for i in range(slen):
+            next_move = self.notations.valid_moves[csize].generate_valid_move()
+            scramble.append(next_move)
+
+            # Don't repeat moves consecutively
+            if i>0 and scramble[i-1][0] == scramble[i][0]:
+                while scramble[i-1][0] == scramble[i][0]:
+                    scramble[i] = self.notations.valid_moves[csize].generate_valid_move()
+
+        return " ".join(scramble)

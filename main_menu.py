@@ -31,3 +31,4 @@ class MainMenu(AbstractMenu):
     def close(self):
         print("Thank you for using the Rubik's Cube help desk.")
         input("Press ENTER to quit.")
+        exit(0)
