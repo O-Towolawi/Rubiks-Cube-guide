@@ -14,9 +14,13 @@ class AbstractMenu(ABC):
             else:
                 print(f"{key}. {value}")
         try:
-            option = int(input(f"How can we help you today [1-{len(self.choices)}]? \n"))
+            option = int(
+                input(f"How can we help you today [1-{len(self.choices)}]? \n")
+            )
         except ValueError:
-            print(f"Invalid option. Please choose an integer number in the range 1-{len(self.choices)}.\n")
+            print(
+                f"Invalid option. Please choose an integer number in the range 1-{len(self.choices)}.\n"
+            )
             return self.run()
         return self.select_option(option)
 
