@@ -16,4 +16,4 @@ jobs:
           python-version: "3.11"
       - name: Run Unit test(s)
         run: |
-          poetry run pytest test_unit_*.py
+          pytest -s test_unit_*.py
