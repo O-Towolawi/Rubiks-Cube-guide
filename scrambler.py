@@ -3,7 +3,7 @@ import random
 from abstract_menu import AbstractMenu
 from concrete_commands import GoToMenuCommand
 from notations_menu import NotationsMenu
-from scrambler_menu import ScramblerAbstractMenu
+from scrambler_menu import ScramblerMenu
 
 
 class Scrambler(AbstractMenu):
@@ -34,7 +34,7 @@ class Scrambler(AbstractMenu):
                 self.gen_scramble(4, slen)
             case 4:
                 print("Returning to main scrambler menu.")
-                GoToMenuCommand(ScramblerAbstractMenu()).execute()
+                GoToMenuCommand(ScramblerMenu()).execute()
             case _:
                 print("Invalid option.")
                 self.run()
