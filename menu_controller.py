@@ -17,6 +17,11 @@ class MenuController:
 
         GoToMenuCommand(PatternsMenu()).execute()
 
+    def go_to_x2_patterns(self):
+        from x2_patterns import X2Patterns
+
+        GoToMenuCommand(X2Patterns()).execute()
+
     def go_to_scrambler_menu(self):
         from scrambler_menu import ScramblerMenu
 

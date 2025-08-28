@@ -33,9 +33,17 @@ class OpenScramblerCommand(AbstractMenuCommand):
         self.scrambler.run()
 
 
-class OpenPatternDictCommand(AbstractMenuCommand):
-    def __init__(self, pattern_dictionary):
-        self.pattern_dictionary = pattern_dictionary
+class OpenPatternsMenuCommand(AbstractMenuCommand):
+    def __init__(self, patterns_menu):
+        self.patterns_menu = patterns_menu
 
     def execute(self):
-        self.pattern_dictionary.run()
+        self.patterns_menu.run()
+
+
+class OpenX2PatternsCommand(AbstractMenuCommand):
+    def __init__(self, x2_patterns):
+        self.x2_patterns = x2_patterns
+
+    def execute(self):
+        self.x2_patterns.run()
