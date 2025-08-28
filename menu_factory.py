@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from concrete_commands import ReturnToMainMenuCommand
+from concrete_commands import GoToMenuCommand
 from main_menu import MainMenu
 
 
@@ -8,7 +8,6 @@ class AbstractMenu(ABC):
     def __init__(self):
         self.choices = {} # int: [description, call command]
         self.menu_text = "" # Menu description
-        self.main_menu = MainMenu()
 
     def run(self) -> int:
         print(self.menu_text)
@@ -19,7 +18,7 @@ class AbstractMenu(ABC):
 
     def close(self):
         print("Returning to main menu.")
-        return ReturnToMainMenuCommand(self.main_menu).execute()
+        return GoToMenuCommand().execute()
 
     @abstractmethod
     def select_option(self, menu_option):

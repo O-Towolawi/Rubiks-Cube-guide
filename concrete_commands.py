@@ -1,12 +1,12 @@
 from abstract_menu_command import AbstractMenuCommand
 
 
-class ReturnToMainMenuCommand(AbstractMenuCommand):
-    def __init__(self, main_menu):
-        self.main_menu = main_menu
+class GoToMenuCommand(AbstractMenuCommand):
+    def __init__(self, menu):
+        self.menu = menu
 
     def execute(self):
-        self.main_menu.run()
+        self.menu.run()
 
 class CloseMainMenuCommand(AbstractMenuCommand):
     def __init__(self, main_menu):

@@ -1,5 +1,5 @@
 from abstract_menu_option import MenuOption
-from scrambler import Scrambler
+from menu_controller import MenuController
 
 
 class ScramblerMenu(MenuOption):
@@ -10,12 +10,12 @@ class ScramblerMenu(MenuOption):
             2: "Quit",
         }
         self.menu_text = "Welcome to the Scrambler! Please choose an option:"
+        self.controller = MenuController()
 
     def select_option(self, option: int):
         match option:
             case 1:
-                self.scrambler = Scrambler()
-                self.scrambler.run()
+                self.controller.go_to_scrambler()
             case 2:
                 print("Returning to main menu.")
-                self.menu.run()
+                self.controller.go_to_main_menu()

@@ -1,7 +1,8 @@
 import random
 
 from abstract_menu_option import MenuOption
-from notations_dictionary import NotationsDictionary
+from concrete_commands import GoToMenuCommand
+from notations_menu import NotationsMenu
 from scrambler_menu import ScramblerMenu
 
 
@@ -16,10 +17,8 @@ class Scrambler(MenuOption):
         }
         self.menu_text = "Welcome to the Scrambler! Choose your cube size:"
 
-        self.scrambler_menu = ScramblerMenu()
-
         # all notation and combintations depending on cube size
-        self.notations = NotationsDictionary().get_all_notations()
+        self.notations = NotationsMenu().get_all_notations()
         self.mdir = self.notations["directions_notations"]  # move direction
         self.mcount = self.notations["move_count_notations"]  # move count
         self.moves = self.notations["notations_list"]
@@ -35,7 +34,7 @@ class Scrambler(MenuOption):
                 self.gen_scramble(4, slen)
             case 4:
                 print("Returning to main scrambler menu.")
-                self.scrambler_menu.run()
+                GoToMenuCommand(ScramblerMenu()).execute()
             case _:
                 print("Invalid option.")
                 self.run()
