@@ -11,4 +11,4 @@ Other tasks to complete:
 2. Tips and tricks
 3. Patterns directory
 4. More cube sizes
-[x] more efficient menu - way to put functions in dictionary?
+- [x] more efficient menu - way to put functions in dictionary?
