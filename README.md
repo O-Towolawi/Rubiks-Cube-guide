@@ -10,5 +10,5 @@ Other tasks to complete:
 1. Solve timer
 2. Tips and tricks
 3. Patterns directory
-4. More cube sizes  
+4. More cube sizes
 - [x] more efficient menu - way to put functions in dictionary?
