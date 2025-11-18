@@ -1,6 +1,6 @@
-from abstract_menu import AbstractMenu
-from menu_controller import MenuController
-from notations import Notations
+from src.menus.abstract_menu import AbstractMenu
+from src.utils.menu_controller import MenuController
+from src.feature.notations import Notations
 
 
 class Scrambler(AbstractMenu):

@@ -1,4 +1,4 @@
-from abstract_menu_command import AbstractMenuCommand
+from src.abstracts.abstract_menu_command import AbstractMenuCommand
 
 
 class GoToMenuCommand(AbstractMenuCommand):
