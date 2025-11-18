@@ -1,6 +1,6 @@
 import random
 
-from abstract_valid_move import AbstractValidMoves
+from src.abstracts.abstract_valid_move import AbstractValidMoves
 
 
 class X2ValidMoves(AbstractValidMoves):

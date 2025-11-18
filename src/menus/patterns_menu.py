@@ -1,5 +1,5 @@
-from abstract_menu import AbstractMenu
-from menu_controller import MenuController
+from src.menus.abstract_menu import AbstractMenu
+from src.utils.menu_controller import MenuController
 
 
 class PatternsMenu(AbstractMenu):
